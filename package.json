@@ -1,0 +1,12 @@
+{
+    "name": "bonk-web",
+    "version": "1.0.0",
+    "description": "Web interface for Bonk bot management",
+    "scripts": {
+        "dev": "npx tailwindcss -i ./src/css/input.css -o ./public/css/style.css --watch",
+        "build": "npx tailwindcss -i ./src/css/input.css -o ./public/css/style.css --minify"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.4.1"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "bonk/web",
+    "description": "Web interface for Bonk bot management",
+    "type": "project",
+    "require": {
+        "php": ">=8.0",
+        "ext-pdo": "*",
+        "ext-pdo_sqlite": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

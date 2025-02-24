@@ -1,0 +1,31 @@
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Bots table
+CREATE TABLE IF NOT EXISTS bots (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    bot_id VARCHAR(50) NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    server_ip VARCHAR(255) NOT NULL DEFAULT 'localhost',
+    server_port INTEGER NOT NULL DEFAULT 19132,
+    username VARCHAR(50) NOT NULL,
+    is_active BOOLEAN DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    UNIQUE(bot_id)
+);
+
+-- Quota table
+CREATE TABLE IF NOT EXISTS quotas (
+    user_id INTEGER PRIMARY KEY,
+    bots_limit INTEGER NOT NULL DEFAULT 1,
+    usage_count INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
